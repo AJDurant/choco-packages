@@ -15,11 +15,10 @@
         <title>SQLiteSpy</title>
         <authors>Ralf Junker</authors>
         <projectUrl>https://www.yunqa.de/delphi/apps/sqlitespy/index</projectUrl>
-        <iconUrl>https://cdn.statically.io/img/www.yunqa.de/f=auto/delphi/_media/apps/sqlitespy/logo.png</iconUrl>
+        <iconUrl>https://cdn.statically.io/gh/ajdurant/choco-sqlitespy/main/logo.png</iconUrl>
         <copyright>2000-2023 Ralf Junker</copyright>
         <licenseUrl>https://www.yunqa.de/delphi/license_donate#applications</licenseUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
-        <projectSourceUrl>https://www.yunqa.de/delphi/apps/sqlitespy/index</projectSourceUrl>
         <docsUrl>https://www.yunqa.de/delphi/apps/sqlitespy/index</docsUrl>
         <mailingListUrl>https://www.yunqa.de/delphi/mailinglist</mailingListUrl>
         <tags>sqlite sqlite3 sqlitespy database manager</tags>
