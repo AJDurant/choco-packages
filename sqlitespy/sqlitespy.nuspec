@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- Test your packages in a test environment: https://github.com/chocolatey/chocolatey-test-environment -->
+
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+    <metadata>
+        <!-- == PACKAGE SPECIFIC SECTION == -->
+        <id>sqlitespy</id>
+        <version>1.9.17</version>
+        <packageSourceUrl>https://github.com/AJDurant/choco-sqlitespy</packageSourceUrl>
+        <owners>AJDurant</owners>
+        <!-- ============================== -->
+
+        <!-- == SOFTWARE SPECIFIC SECTION == -->
+        <title>SQLiteSpy</title>
+        <authors>Ralf Junker</authors>
+        <projectUrl>https://www.yunqa.de/delphi/apps/sqlitespy/index</projectUrl>
+        <iconUrl>https://cdn.statically.io/img/www.yunqa.de/f=auto/delphi/_media/apps/sqlitespy/logo.png</iconUrl>
+        <copyright>2000-2023 Ralf Junker</copyright>
+        <licenseUrl>https://www.yunqa.de/delphi/license_donate#applications</licenseUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <projectSourceUrl>https://www.yunqa.de/delphi/apps/sqlitespy/index</projectSourceUrl>
+        <docsUrl>https://www.yunqa.de/delphi/apps/sqlitespy/index</docsUrl>
+        <mailingListUrl>https://www.yunqa.de/delphi/mailinglist</mailingListUrl>
+        <tags>sqlite sqlite3 sqlitespy database manager</tags>
+        <summary>SQLiteSpy is a fast and compact GUI database manager for SQLite.</summary>
+        <description>SQLiteSpy is a fast and compact GUI database manager for SQLite. It reads SQLite3 files and executes SQL against them. Its graphical user interface makes it very easy to explore, analyze, and manipulate SQLite3 databases.
+        </description>
+        <releaseNotes>https://www.yunqa.de/delphi/apps/sqlitespy/history</releaseNotes>
+        <!-- =============================== -->
+
+        <!-- Specifying dependencies and version ranges? https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
+        <dependencies>
+        </dependencies>
+
+        <!--<provides>NOT YET IMPLEMENTED</provides>-->
+        <!--<conflicts>NOT YET IMPLEMENTED</conflicts>-->
+        <!--<replaces>NOT YET IMPLEMENTED</replaces>-->
+    </metadata>
+    <files>
+        <file src="tools\**" target="tools" />
+    </files>
+</package>
