@@ -1,7 +1,7 @@
 ﻿
 $ErrorActionPreference = 'Stop'; # stop on all errors
 $toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
-$url = "https://www.yunqa.de/delphi/downloads/SQLiteSpy_v1.9.17.zip" # download url, HTTPS preferred
+$url = "https://www.yunqa.de/delphi/downloads/SQLiteSpy_v1.9.19.zip" # download url, HTTPS preferred
 
 $packageArgs = @{
     PackageName    = $env:ChocolateyPackageName
@@ -10,7 +10,7 @@ $packageArgs = @{
     Url            = $url
     # You can also use checksum.exe (choco install checksum) and use it
     # e.g. checksum -t sha256 -f path\to\file
-    Checksum       = '07AF42452F67E5B2D31CFDFC479EF1A2B9734B73FCD24B94F20B5335BAF9D81F'
+    Checksum       = 'A3942C4463287116A357E382721517F3225EECBA5CCEF580D5BD112A2BF01C44'
     ChecksumType   = 'sha256'
 }
 
