@@ -1,20 +1,22 @@
 ﻿
 $ErrorActionPreference = 'Stop'; # stop on all errors
 $toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
-$url = "https://www.yunqa.de/delphi/downloads/SQLiteSpy_v1.9.19.zip" # download url, HTTPS preferred
+
+If ((Get-OSArchitectureWidth -compare 32) -or ($env:chocolateyForceX86 -eq $true)) {
+    $folder = "win32"
+}
+Else {
+    $folder = "win64"
+}
 
 $packageArgs = @{
     PackageName    = $env:ChocolateyPackageName
-    UnzipLocation  = $toolsDir
-    SpecificFolder = "win64"
-    Url            = $url
-    # You can also use checksum.exe (choco install checksum) and use it
-    # e.g. checksum -t sha256 -f path\to\file
-    Checksum       = 'A3942C4463287116A357E382721517F3225EECBA5CCEF580D5BD112A2BF01C44'
-    ChecksumType   = 'sha256'
+    FileFullPath   = "$toolsDir/SQLiteSpy_v1.9.17.zip"
+    Destination    = $toolsDir
+    SpecificFolder = $folder
 }
 
-Install-ChocolateyZipPackage @packageArgs # https://chocolatey.org/docs/helpers-install-chocolatey-zip-package
+Get-ChocolateyUnzip @packageArgs # https://docs.chocolatey.org/en-us/create/functions/get-chocolateyunzip
 
 # Create GUI shims
 $exeFiles = get-childitem $toolsDir -include *.exe -recurse
@@ -30,4 +32,4 @@ If ( Test-ProcessAdminRights ) {
 }
 
 Install-ChocolateyShortcut -shortcutFilePath (Join-Path -Path $progsFolder -ChildPath 'SQLiteSpy.lnk') `
-    -targetPath (Join-Path -Path $toolsDir -ChildPath "./win64/SQLiteSpy.exe")
+    -targetPath (Join-Path -Path $toolsDir -ChildPath "./$folder/SQLiteSpy.exe")
