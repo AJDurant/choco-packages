@@ -6,7 +6,7 @@
     <metadata>
         <!-- == PACKAGE SPECIFIC SECTION == -->
         <id>sqlitespy</id>
-        <version>1.9.20</version>
+        <version>1.9.25</version>
         <packageSourceUrl>https://github.com/AJDurant/choco-sqlitespy</packageSourceUrl>
         <owners>AJDurant</owners>
         <!-- ============================== -->
