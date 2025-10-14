@@ -11,7 +11,7 @@ Else {
 
 $packageArgs = @{
     PackageName    = $env:ChocolateyPackageName
-    FileFullPath   = "$toolsDir/SQLiteSpy_v1.9.29.zip"
+    FileFullPath   = "$toolsDir/SQLiteSpy_v1.9.30.zip"
     Destination    = $toolsDir
     SpecificFolder = $folder
 }
