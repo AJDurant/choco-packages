@@ -1,0 +1,64 @@
+name: Auto-Update
+
+on:
+  workflow_dispatch: # Enable manual trigger
+    inputs:
+      forced_packages:
+        description: The list of packages to forcibly update (like "pkg1:ver1 pkg2")
+        required: false
+  schedule:
+    - cron: "5 0/8 * * *"
+
+jobs:
+  auto_update:
+    runs-on: windows-2022
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 100
+      - name: Check a build environment
+        run: |
+          Get-CimInstance win32_operatingsystem -Property Caption, OSArchitecture, Version | fl Caption, OSArchitecture, Version
+          $PSVersionTable
+          git --version
+          choco --version
+          cmd /c "set" | grep -i 'github\|runner' | sort
+      - name: Initialize Git config
+        run: |
+          git config --global user.email "chocolatey@ajdurant.co.uk"
+          git config --global user.name "Chocolatey"
+          git config --global core.safecrlf false
+      - name: Install AU
+        run: |
+          choco install chocolatey-au -iy
+          choco install wormies-au-helpers -iy
+      - name: Check update for packages
+        run: |
+          $ErrorActionPreference = 'Continue'
+          ./update_all.ps1 -ForcedPackages '${{ github.event.inputs.forced_packages }}'
+          7z a au_temp.zip $Env:TEMP\chocolatey\au\*
+        env:
+          au_push: true
+          # GitHub token to commit pushed packages to repository
+          github_user_repo: ${{ github.repository }}
+          github_api_key: ${{ secrets.AU_GITHUB_API_KEY }}
+
+          # ID of the gist used to save run results - create a gist under the github_user (secret or not) and grab the id - https://gist.github.com/name/id
+          gist_id: 460a993a176efcd009c2ffaccd4fb85f
+
+          # Chocolatey API key - to push updated packages
+          api_key: ${{ secrets.AU_CHOCOLATEY_API_KEY }}
+
+          # GitHub Actions build url which points to this build
+          GH_ACTIONS_BUILD_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      - name: Upload update results
+        uses: actions/upload-artifact@v4
+        with:
+          name: update_results
+          path: |
+            update_info.xml
+            Update-AUPackages.md
+            au_temp.zip
