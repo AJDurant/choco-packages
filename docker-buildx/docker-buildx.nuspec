@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Test your packages in a test environment:
+https://github.com/chocolatey/chocolatey-test-environment -->
+
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter
+enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+    <metadata>
+        <!-- == PACKAGE SPECIFIC SECTION == -->
+        <id>docker-buildx</id>
+        <version>0.29.1.20251017</version>
+        <packageSourceUrl>https://github.com/AJDurant/choco-packages/tree/main/docker-buildx</packageSourceUrl>
+        <owners>AJDurant</owners>
+        <!-- ============================== -->
+
+        <!-- == SOFTWARE SPECIFIC SECTION == -->
+        <title>Docker Buildx</title>
+        <authors>Docker Contributors</authors>
+        <projectUrl>https://www.docker.com</projectUrl>
+        <iconUrl>https://cdn.statically.io/gh/AJDurant/choco-packages/main/docker/docker.png</iconUrl>
+        <copyright></copyright>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <projectSourceUrl>https://github.com/docker/buildx</projectSourceUrl>
+        <docsUrl>https://github.com/docker/buildx/blob/master/docs/reference/buildx.md/</docsUrl>
+        <mailingListUrl>https://forums.docker.com/</mailingListUrl>
+        <bugTrackerUrl>https://github.com/docker/buildx/issues</bugTrackerUrl>
+        <tags>docker devops containers</tags>
+        <summary>Buildx is a Docker CLI plugin for extended build capabilities with BuildKit.</summary>
+        <description><![CDATA[Buildx is a Docker CLI plugin that extends the docker build command with the full support of the features provided by Moby BuildKit builder toolkit.
+It provides the same user experience as docker build with many new features like creating scoped builder instances and building against multiple nodes concurrently.
+
+After installation, Buildx can be accessed through the `docker buildx` command with Docker 19.03.
+`docker buildx build` is the command for starting a new build.
+With Docker versions older than 19.03 Buildx binary can be called directly to access the `docker buildx` subcommands.
+
+Chocolatey releases for Docker are not done nor supported by Docker, Inc.
+This package is maintained by the community members.
+
+LICENSE: Apache 2.0.
+]]></description>
+        <releaseNotes>https://github.com/docker/buildx/releases/tag/v0.29.1</releaseNotes>
+        <!-- =============================== -->
+
+        <!-- Specifying dependencies and version ranges?
+        https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
+        <dependencies>
+            <dependency id="docker-cli" version="19.03.0" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="legal\**" target="legal" />
+        <file src="tools\**" target="tools" />
+    </files>
+</package>
