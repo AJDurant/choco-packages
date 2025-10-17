@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Test your packages in a test environment:
 https://github.com/chocolatey/chocolatey-test-environment -->
 
@@ -8,7 +8,7 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
     <metadata>
         <!-- == PACKAGE SPECIFIC SECTION == -->
         <id>containerd</id>
-        <version>2.1.4</version>
+        <version>2.1.4.20251017</version>
         <packageSourceUrl>https://github.com/AJDurant/choco-containerd</packageSourceUrl>
         <owners>AJDurant</owners>
         <!-- ============================== -->
@@ -29,44 +29,41 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
         <bugTrackerUrl>https://github.com/containerd/containerd/issues</bugTrackerUrl>
         <tags>docker containerd devops containers</tags>
         <summary>An open and reliable container runtime.</summary>
-        <description>containerd is an industry-standard container runtime with an emphasis on
-            simplicity, robustness, and portability. It is available as a daemon for Linux and
-            Windows, which can manage the complete container lifecycle of its host system: image
-            transfer and storage, container execution and supervision, low-level storage and network
-            attachments, etc.
+        <description><![CDATA[containerd is an industry-standard container runtime with an emphasis on
+simplicity, robustness, and portability. It is available as a daemon for Linux and
+Windows, which can manage the complete container lifecycle of its host system: image
+transfer and storage, container execution and supervision, low-level storage and network
+attachments, etc.
 
-            This package contains the containerd engine for Windows to run Windows containers on
-            Windows hosts.
-            containerd is designed to be embedded into a larger system, rather than being used
-            directly by developers or end-users.
+This package contains the containerd engine for Windows to run Windows containers on Windows hosts.
+containerd is designed to be embedded into a larger system, rather than being used directly by developers or end-users.
 
-            In order for containerd to be useful to you, your docker engine needs to be configured
-            to
-            use it. The installer will attempt to do this for you. For example add to your
-            `daemon.json`:
+In order for containerd to be useful to you, your docker engine needs to be configured to use it.
+The installer will attempt to do this for you. For example add to your `daemon.json`:
 
-            ```
-            {
-            "default-runtime": "io.containerd.runhcs.v1",
-            "features": {
-            "containerd-snapshotter": true
-            }
-            }
-            ```
+```
+{
+    "default-runtime": "io.containerd.runhcs.v1",
+    "features": {
+        "containerd-snapshotter": true
+    }
+}
+```
 
-            #### Package Parameters
-            The following package parameters can be set:
+#### Package Parameters
+The following package parameters can be set:
 
-            * `/StartService` - Automatically start (or restart) the containerd service after
-            install
-            (or upgrade)
+* `/StartService` - Automatically start (or restart) the containerd service after install (or upgrade)
 
-            To pass parameters, use `--params "''"` (e.g. `choco install containerd [other
-            options] --params="'/StartService'"`).
-            To have choco remember parameters on upgrade, be sure to set `choco feature enable
-            -n=useRememberedArgumentsForUpgrades`.
-        </description>
-        <releaseNotes>https://github.com/containerd/containerd/releases</releaseNotes>
+To pass parameters, use `--params "''"` (e.g. `choco install containerd [other options] --params="'/StartService'"`).
+To have choco remember parameters on upgrade, be sure to set `choco feature enable -n=useRememberedArgumentsForUpgrades`.
+
+Chocolatey releases for containerd are not done nor supported by the containerd maintainers.
+This package is maintained by the community members.
+
+LICENSE: Apache 2.0.
+]]></description>
+        <releaseNotes>https://github.com/containerd/containerd/releases/tag/v2.1.4</releaseNotes>
         <!-- =============================== -->
 
         <!-- Specifying dependencies and version ranges?
@@ -84,6 +81,7 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
         YET IMPLEMENTED</replaces>-->
     </metadata>
     <files>
+        <file src="legal\**" target="legal" />
         <file src="tools\**" target="tools" />
     </files>
 </package>
