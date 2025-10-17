@@ -2,16 +2,16 @@
 $ErrorActionPreference = 'Stop'; # stop on all errors
 $toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 
-If ((Get-OSArchitectureWidth -compare 32) -or ($env:chocolateyForceX86 -eq $true)) {
+if ((Get-OSArchitectureWidth -compare 32) -or ($env:chocolateyForceX86 -eq $true)) {
     $folder = "win32"
 }
-Else {
+else {
     $folder = "win64"
 }
 
 $packageArgs = @{
     PackageName    = $env:ChocolateyPackageName
-    FileFullPath   = "$toolsDir/SQLiteSpy_v1.9.30.zip"
+    FileFullPath   = "$toolsDir/SQLiteSpy.zip"
     Destination    = $toolsDir
     SpecificFolder = $folder
 }
@@ -19,15 +19,15 @@ $packageArgs = @{
 Get-ChocolateyUnzip @packageArgs # https://docs.chocolatey.org/en-us/create/functions/get-chocolateyunzip
 
 # Create GUI shims
-$exeFiles = get-childitem $toolsDir -include *.exe -recurse
+$exeFiles = Get-ChildItem $toolsDir -Include *.exe -Recurse
 foreach ($file in $exeFiles) {
     #generate a gui shim file
-    New-Item "$file.gui" -type file -force | Out-Null
+    New-Item "$file.gui" -type file -Force | Out-Null
 }
 
 # Start menu shortcuts
 $progsFolder = [Environment]::GetFolderPath('Programs')
-If ( Test-ProcessAdminRights ) {
+if ( Test-ProcessAdminRights ) {
     $progsFolder = [Environment]::GetFolderPath('CommonPrograms')
 }
 
