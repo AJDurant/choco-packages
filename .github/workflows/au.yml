@@ -44,7 +44,7 @@ jobs:
           au_push: true
           # GitHub token to commit pushed packages to repository
           github_user_repo: ${{ github.repository }}
-          github_api_key: ${{ secrets.GITHUB_TOKEN }}
+          github_api_key: ${{ secrets.AU_GITHUB_API_KEY }}
 
           # ID of the gist used to save run results - create a gist under the github_user (secret or not) and grab the id - https://gist.github.com/name/id
           gist_id: 460a993a176efcd009c2ffaccd4fb85f
