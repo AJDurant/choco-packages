@@ -1,14 +1,12 @@
 ﻿
 $ErrorActionPreference = 'Stop'; # stop on all errors
-$toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+$toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 . "$toolsDir\helper.ps1"
 Test-DockerdConflict
 
-$url = "https://download.docker.com/win/static/stable/x86_64/docker-28.5.1.zip" # download url, HTTPS preferred
-
 $pp = Get-PackageParameters
 
-If ( !$pp.DockerGroup ) {
+if ( !$pp.DockerGroup ) {
     $pp.DockerGroup = "docker-users"
 }
 
@@ -16,14 +14,14 @@ $dockerdPath = Join-Path $env:ProgramFiles "docker\dockerd.exe"
 $groupUser = $env:USER_NAME
 
 $packageArgs = @{
-    PackageName   = $env:ChocolateyPackageName
-    UnzipLocation = $env:ProgramFiles
-    Url           = $url
+    PackageName    = $env:ChocolateyPackageName
+    UnzipLocation  = $env:ProgramFiles
+    Url64bit = 'https://download.docker.com/win/static/stable/x86_64/docker-28.5.1.zip'
 
     # You can also use checksum.exe (choco install checksum) and use it
     # e.g. checksum -t sha256 -f path\to\file
-    Checksum      = '7979493AD91DBBAAFF7FA857CF8F90BDCA288431575A398022C603E98E201FBD'
-    ChecksumType  = 'sha256'
+    Checksum64 = '7979493ad91dbbaaff7fa857cf8f90bdca288431575a398022c603e98e201fbd'
+    ChecksumType64 = 'sha256'
 }
 
 Install-ChocolateyZipPackage @packageArgs # https://chocolatey.org/docs/helpers-install-chocolatey-zip-package
@@ -31,17 +29,17 @@ Install-ChocolateyZipPackage @packageArgs # https://chocolatey.org/docs/helpers-
 Install-BinFile -Name "docker" -Path "$env:ProgramFiles\docker\docker.exe"
 
 # Set up user group for non admin usage
-If (net localgroup | Select-String $($pp.DockerGroup) -SimpleMatch -Quiet) {
+if (net localgroup | Select-String $($pp.DockerGroup) -SimpleMatch -Quiet) {
     Write-Host "$($pp.DockerGroup) group already exists"
 }
-Else {
+else {
     net localgroup $($pp.DockerGroup) /add /comment:"Users of Docker"
 }
-If ( !$pp.noAddGroupUser ) {
-    If (net localgroup $($pp.DockerGroup) | Select-String $groupUser -SimpleMatch -Quiet) {
+if ( !$pp.noAddGroupUser ) {
+    if (net localgroup $($pp.DockerGroup) | Select-String $groupUser -SimpleMatch -Quiet) {
         Write-Host "$groupUser already in $($pp.DockerGroup) group"
     }
-    Else {
+    else {
         Write-Host "Adding $groupUser to $($pp.DockerGroup) group, you will need to log out and in to take effect"
         net localgroup $($pp.DockerGroup) $groupUser /add
     }
@@ -51,11 +49,11 @@ If ( !$pp.noAddGroupUser ) {
 $daemonConfig = @{"group" = $($pp.DockerGroup) }
 $daemonFolder = "$env:ProgramData\docker\config\"
 $daemonFile = Join-Path $daemonFolder "daemon.json"
-If (Test-Path $daemonFile) {
+if (Test-Path $daemonFile) {
     Write-Host "Config file '$daemonFile' already exists, not overwriting"
 }
-Else {
-    If (-not (Test-Path $daemonFolder)) {
+else {
+    if (-not (Test-Path $daemonFolder)) {
         New-Item -ItemType Directory -Path $daemonFolder
     }
     $jsonContent = $daemonConfig | ConvertTo-Json -Depth 10
@@ -64,25 +62,25 @@ Else {
 }
 
 # From v23 the package is now installed in Program Files. So clean up old files/service from tools
-If (Test-Path "$toolsDir\docker") {
-    Write-output "Cleaning up old docker files..."
+if (Test-Path "$toolsDir\docker") {
+    Write-Output "Cleaning up old docker files..."
     Remove-Item "$toolsDir\docker" -Recurse -Force
 }
-If (Test-OurOldDockerd) {
-    Write-output "Unregistering old docker service..."
+if (Test-OurOldDockerd) {
+    Write-Output "Unregistering old docker service..."
     Start-ChocolateyProcessAsAdmin -Statements "delete docker" "C:\Windows\System32\sc.exe"
 }
 
 # Install service if not already there, conflict check at start also means no others.
-If (-not (Test-OurDockerd)) {
+if (-not (Test-OurDockerd)) {
     $scArgs = "create docker binpath= `"$dockerdPath --run-service`" start= auto displayname= `"$($env:ChocolateyPackageTitle)`""
     Start-ChocolateyProcessAsAdmin -Statements "$scArgs" "C:\Windows\System32\sc.exe"
 }
 
-If (!$pp.StartService) {
+if (!$pp.StartService) {
     Write-Host "$($env:ChocolateyPackageTitle) service created, start with: `sc start docker` "
 }
-Else {
-    Write-output "Starting docker service..."
+else {
+    Write-Output "Starting docker service..."
     Start-ChocolateyProcessAsAdmin -Statements "start docker" "C:\Windows\System32\sc.exe"
 }
