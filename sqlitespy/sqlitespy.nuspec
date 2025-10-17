@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Test your packages in a test environment:
 https://github.com/chocolatey/chocolatey-test-environment -->
 
@@ -8,7 +8,7 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
     <metadata>
         <!-- == PACKAGE SPECIFIC SECTION == -->
         <id>sqlitespy</id>
-        <version>1.9.30</version>
+        <version>1.9.30.20251017</version>
         <packageSourceUrl>https://github.com/AJDurant/choco-sqlitespy</packageSourceUrl>
         <owners>AJDurant</owners>
         <!-- ============================== -->
@@ -25,19 +25,24 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
         <mailingListUrl>https://www.yunqa.de/delphi/mailinglist</mailingListUrl>
         <tags>sqlite sqlite3 sqlitespy database manager</tags>
         <summary>SQLiteSpy is a fast and compact GUI database manager for SQLite.</summary>
-        <description>SQLiteSpy is a fast and compact GUI database manager for SQLite. It reads
-            SQLite3 files and executes SQL against them. Its graphical user interface makes it very
-            easy to explore, analyze, and manipulate SQLite3 databases.
+        <description><![CDATA[SQLiteSpy is a fast and compact GUI database manager for SQLite.
+It reads SQLite3 files and executes SQL against them.
+Its graphical user interface makes it very easy to explore, analyze, and manipulate SQLite3 databases.
 
-            ### Distribution
+### Distribution
 
-            This package includes the software distribution, the developer has given permission to
-            do so:
+This package includes the software distribution, the developer has given permission to
+do so:
 
-            > Feel free to choose your packaging. If you believe it useful to include the SQLiteSpy
-            ZIP archive into the chocolatey package, you are welcome to do so.
+> Feel free to choose your packaging. If you believe it useful to include the SQLiteSpy ZIP archive into the chocolatey package, you are welcome to do so.
 
-        </description>
+Chocolatey releases for SQLiteSpy are not done nor supported by the developer.
+This package is maintained by the community members.
+
+LICENSE: SQLiteSpy is Freeware for personal and educational use. If you are using SQLiteSpy commercially, your donation is welcome to promote the ongoing development of this software. Thank you!
+
+[Donate or purchase license from the developer](https://donate.stripe.com/8wM5micTl1XG4HmdRc)
+]]></description>
         <releaseNotes>https://www.yunqa.de/delphi/apps/sqlitespy/history</releaseNotes>
         <!-- =============================== -->
 
@@ -54,6 +59,7 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
         YET IMPLEMENTED</replaces>-->
     </metadata>
     <files>
+        <file src="legal\**" target="legal" />
         <file src="tools\**" target="tools" />
     </files>
 </package>

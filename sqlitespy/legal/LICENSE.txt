@@ -1,0 +1,14 @@
+From: https://www.yunqa.de/delphi/license_donate#applications
+
+LICENSE
+
+SQLiteSpy is Freeware for personal and educational use. If you are using SQLiteSpy commercially, your donation is welcome to promote the ongoing development of this software. Thank you!
+
+A license can be purchased from https://donate.stripe.com/8wM5micTl1XG4HmdRc
+
+
+DISTRIBUTION
+
+This package includes the software distribution, the developer has given permission to do so via email:
+
+> Feel free to choose your packaging. If you believe it useful to include the SQLiteSpy ZIP archive into the chocolatey package, you are welcome to do so.
