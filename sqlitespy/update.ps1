@@ -11,12 +11,9 @@ function global:au_GetLatest {
         -Headers $headers `
         -UseBasicParsing
 
-    # Decode HTML entities to catch &ndash; etc.
-    $decoded = [System.Net.WebUtility]::HtmlDecode($historyHTML)
-
     # Pattern: <h2 ... id="sqlitespy_v1930_1_jul_2025">SQLiteSpy v1.9.30 – 1 Jul 2025</h2>
-    $pattern = '(?is)<h2[^>]*id="sqlitespy_v(?<vercode>\d+)[^"]*"[^>]*>\s*SQLiteSpy\s+v(?<ver>\d+(?:\.\d+){1,3})\s*(?:–|-)\s*(?<date>[^<]+)</h2>'
-    $m = [regex]::Match($decoded, $pattern)
+    $pattern = '(?is)<h2[^>]*id="sqlitespy_v(?<vercode>\d+)[^"]*"[^>]*>\s*SQLiteSpy\s+v(?<ver>\d+(?:\.\d+){1,3})\s*(?:–|-)\s*(?<date>[^<]+)<\/h2>'
+    $m = [regex]::Match($historyHTML, $pattern)
     if (-not $m.Success) { throw "Could not find the latest <h2> entry with id='sqlitespy_v...'." }
 
     $version = $m.Groups['ver'].Value
