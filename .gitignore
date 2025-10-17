@@ -9,6 +9,7 @@
 # Packages
 bin/
 *.nupkg
+*.tar.gz
 *.zip
 *.exe
 

@@ -1,27 +1,13 @@
 ﻿
 $ErrorActionPreference = 'Stop'; # stop on all errors
-$toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
+$toolsDir = "$(Split-Path -Parent $MyInvocation.MyCommand.Definition)"
 . "$toolsDir\helper.ps1"
 Test-ContainerdConflict
-
-$url = "https://github.com/containerd/containerd/releases/download/v2.1.4/containerd-2.1.4-windows-amd64.tar.gz"
 
 $pp = Get-PackageParameters
 
 $containerdPath = Join-Path $env:ProgramFiles "containerd/bin/containerd.exe"
 
-$downloadArgs = @{
-    PackageName  = $env:ChocolateyPackageName
-    FileFullPath = "$toolsDir/containerd-windows-amd64.tar.gz"
-    Url          = $url
-
-    # You can also use checksum.exe (choco install checksum) and use it
-    # e.g. checksum -t sha256 -f path\to\file
-    Checksum     = '2C50AEB1E6D9AD513E986408EA066919318F14271C5A1B952F118878ECFA6A56'
-    ChecksumType = 'sha256'
-}
-
-Get-ChocolateyWebFile @downloadArgs
 $File = Get-ChildItem -File -Path "$toolsDir/containerd-windows-amd64.tar.gz"
 Get-ChocolateyUnzip -FileFullPath $File.FullName -Destination $toolsDir
 
@@ -44,13 +30,13 @@ $daemonFolder = "$env:ProgramData\docker\config\"
 $daemonFile = Join-Path $daemonFolder "daemon.json"
 
 # Ensure directory exists
-If (-not (Test-Path $daemonFolder)) {
+if (-not (Test-Path $daemonFolder)) {
     New-Item -ItemType Directory -Path $daemonFolder
 }
 
 # Read existing config or create empty hashtable
 $existingConfig = @{}
-If (Test-Path $daemonFile) {
+if (Test-Path $daemonFile) {
     Write-Host "Config file '$daemonFile' exists, merging configuration"
     try {
         $existingJson = Get-Content $daemonFile -Raw -Encoding UTF8
@@ -83,15 +69,15 @@ $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
 Write-Host "Updated configuration written to '$daemonFile'"
 
 # Install service if not already there, conflict check at start also means no others.
-If (-not (Test-OurContainerd)) {
+if (-not (Test-OurContainerd)) {
     $scArgs = "create containerd binpath= `"$containerdPath --run-service`" start= auto displayname= `"$($env:ChocolateyPackageTitle)`""
     Start-ChocolateyProcessAsAdmin -Statements "$scArgs" "C:\Windows\System32\sc.exe"
 }
 
-If (!$pp.StartService) {
+if (!$pp.StartService) {
     Write-Host "$($env:ChocolateyPackageTitle) service created, start with: `sc start containerd` "
 }
-Else {
-    Write-output "Starting containerd service..."
+else {
+    Write-Output "Starting containerd service..."
     Start-ChocolateyProcessAsAdmin -Statements "start containerd" "C:\Windows\System32\sc.exe"
 }
