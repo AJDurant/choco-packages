@@ -16,11 +16,11 @@ $groupUser = $env:USER_NAME
 $packageArgs = @{
     PackageName    = $env:ChocolateyPackageName
     UnzipLocation  = $env:ProgramFiles
-    Url64bit = 'https://download.docker.com/win/static/stable/x86_64/docker-28.5.1.zip'
+    Url64bit = 'https://download.docker.com/win/static/stable/x86_64/docker-28.5.2.zip'
 
     # You can also use checksum.exe (choco install checksum) and use it
     # e.g. checksum -t sha256 -f path\to\file
-    Checksum64 = '7979493ad91dbbaaff7fa857cf8f90bdca288431575a398022c603e98e201fbd'
+    Checksum64 = 'be76f32e6d92f4d3c64b8eb5e0e86e9597c00eb75ee41b5cc23e7674c5514810'
     ChecksumType64 = 'sha256'
 }
 

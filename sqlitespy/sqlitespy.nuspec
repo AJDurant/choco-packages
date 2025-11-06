@@ -8,7 +8,7 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
     <metadata>
         <!-- == PACKAGE SPECIFIC SECTION == -->
         <id>sqlitespy</id>
-        <version>1.9.30.20251017</version>
+        <version>1.9.31</version>
         <packageSourceUrl>https://github.com/AJDurant/choco-sqlitespy</packageSourceUrl>
         <owners>AJDurant</owners>
         <!-- ============================== -->
