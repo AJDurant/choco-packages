@@ -66,7 +66,12 @@ foreach ($key in $daemonConfig.Keys) {
 $jsonContent = $existingConfig | ConvertTo-Json -Depth 10
 $Utf8NoBomEncoding = New-Object System.Text.UTF8Encoding $False
 [IO.File]::WriteAllLines($daemonFile, $jsonContent, $Utf8NoBomEncoding)
-Write-Host "Updated configuration written to '$daemonFile'"
+Write-Host "Updated dockerd configuration written to '$daemonFile'"
+
+$containerdConfig = "$env:ProgramFiles/containerd/config.toml"
+if (-not (Test-Path $containerdConfig)) {
+    & $containerdPath config default | Out-File "$containerdConfig" -Encoding ascii
+}
 
 # Install service if not already there, conflict check at start also means no others.
 if (-not (Test-OurContainerd)) {
