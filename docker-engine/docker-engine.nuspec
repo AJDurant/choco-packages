@@ -8,7 +8,7 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
     <metadata>
         <!-- == PACKAGE SPECIFIC SECTION == -->
         <id>docker-engine</id>
-        <version>29.1.5</version>
+        <version>29.1.5.20260120</version>
         <packageSourceUrl>https://github.com/AJDurant/choco-packages/tree/main/docker-engine</packageSourceUrl>
         <owners>AJDurant</owners>
         <!-- ============================== -->
@@ -17,7 +17,7 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
         <title>Docker Engine</title>
         <authors>Docker Contributors</authors>
         <projectUrl>https://www.docker.com</projectUrl>
-        <iconUrl>https://cdn.statically.io/gh/AJDurant/choco-packages/main/docker/docker.png</iconUrl>
+        <iconUrl>https://cdn.statically.io/gh/AJDurant/choco-packages/main/docker-engine/docker.png</iconUrl>
         <copyright></copyright>
         <licenseUrl>https://github.com/moby/moby/blob/master/LICENSE</licenseUrl>
         <requireLicenseAcceptance>true</requireLicenseAcceptance>
