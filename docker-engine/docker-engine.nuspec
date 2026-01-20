@@ -8,7 +8,7 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
     <metadata>
         <!-- == PACKAGE SPECIFIC SECTION == -->
         <id>docker-engine</id>
-        <version>28.5.2</version>
+        <version>28.5.2.20260120</version>
         <packageSourceUrl>https://github.com/AJDurant/choco-packages/tree/main/docker-engine</packageSourceUrl>
         <owners>AJDurant</owners>
         <!-- ============================== -->
@@ -85,6 +85,7 @@ LICENSE: Apache 2.0.
         YET IMPLEMENTED</replaces>-->
     </metadata>
     <files>
+        <file src="legal\**" target="legal" />
         <file src="tools\**" target="tools" />
     </files>
 </package>
