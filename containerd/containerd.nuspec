@@ -8,8 +8,8 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
     <metadata>
         <!-- == PACKAGE SPECIFIC SECTION == -->
         <id>containerd</id>
-        <version>2.1.4.20251017</version>
-        <packageSourceUrl>https://github.com/AJDurant/choco-containerd</packageSourceUrl>
+        <version>2.2.1</version>
+        <packageSourceUrl>https://github.com/AJDurant/choco-packages/tree/main/containerd</packageSourceUrl>
         <owners>AJDurant</owners>
         <!-- ============================== -->
 
@@ -63,7 +63,7 @@ This package is maintained by the community members.
 
 LICENSE: Apache 2.0.
 ]]></description>
-        <releaseNotes>https://github.com/containerd/containerd/releases/tag/v2.1.4</releaseNotes>
+        <releaseNotes>https://github.com/containerd/containerd/releases/tag/v2.2.1</releaseNotes>
         <!-- =============================== -->
 
         <!-- Specifying dependencies and version ranges?
@@ -71,6 +71,7 @@ LICENSE: Apache 2.0.
         <dependencies>
             <!-- <dependency id="Microsoft-Hyper-V" source="windowsfeatures" />
       <dependency id="Containers" source="windowsfeatures" /> -->
+            <dependency id="docker-engine" />
         </dependencies>
 
         <!--<provides>NOT
