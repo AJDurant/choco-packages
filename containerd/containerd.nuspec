@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Test your packages in a test environment:
+https://github.com/chocolatey/chocolatey-test-environment -->
+
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter
+enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+    <metadata>
+        <!-- == PACKAGE SPECIFIC SECTION == -->
+        <id>containerd</id>
+        <version>2.2.1</version>
+        <packageSourceUrl>https://github.com/AJDurant/choco-packages/tree/main/containerd</packageSourceUrl>
+        <owners>AJDurant</owners>
+        <!-- ============================== -->
+
+        <!-- == SOFTWARE SPECIFIC SECTION == -->
+        <title>containerd</title>
+        <authors>containerd Contributors</authors>
+        <projectUrl>https://containerd.io/</projectUrl>
+        <iconUrl>
+            https://cdn.statically.io/gh/cncf/artwork/main/projects/containerd/icon/color/containerd-icon-color.png</iconUrl>
+        <copyright></copyright>
+        <licenseUrl>http://www.apache.org/licenses/LICENSE-2.0</licenseUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <projectSourceUrl>https://github.com/containerd/containerd</projectSourceUrl>
+        <docsUrl>https://containerd.io/docs/</docsUrl>
+        <mailingListUrl>
+            https://github.com/containerd/containerd#communication</mailingListUrl>
+        <bugTrackerUrl>https://github.com/containerd/containerd/issues</bugTrackerUrl>
+        <tags>docker containerd devops containers</tags>
+        <summary>An open and reliable container runtime.</summary>
+        <description><![CDATA[containerd is an industry-standard container runtime with an emphasis on
+simplicity, robustness, and portability. It is available as a daemon for Linux and
+Windows, which can manage the complete container lifecycle of its host system: image
+transfer and storage, container execution and supervision, low-level storage and network
+attachments, etc.
+
+This package contains the containerd engine for Windows to run Windows containers on Windows hosts.
+containerd is designed to be embedded into a larger system, rather than being used directly by developers or end-users.
+
+In order for containerd to be useful to you, your docker engine needs to be configured to use it.
+The installer will attempt to do this for you. For example add to your `daemon.json`:
+
+```
+{
+    "default-runtime": "io.containerd.runhcs.v1",
+    "features": {
+        "containerd-snapshotter": true
+    }
+}
+```
+
+#### Package Parameters
+The following package parameters can be set:
+
+* `/StartService` - Automatically start (or restart) the containerd service after install (or upgrade)
+
+To pass parameters, use `--params "''"` (e.g. `choco install containerd [other options] --params="'/StartService'"`).
+To have choco remember parameters on upgrade, be sure to set `choco feature enable -n=useRememberedArgumentsForUpgrades`.
+
+Chocolatey releases for containerd are not done nor supported by the containerd maintainers.
+This package is maintained by the community members.
+
+LICENSE: Apache 2.0.
+]]></description>
+        <releaseNotes>https://github.com/containerd/containerd/releases/tag/v2.2.1</releaseNotes>
+        <!-- =============================== -->
+
+        <!-- Specifying dependencies and version ranges?
+        https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
+        <dependencies>
+            <!-- <dependency id="Microsoft-Hyper-V" source="windowsfeatures" />
+      <dependency id="Containers" source="windowsfeatures" /> -->
+            <dependency id="docker-engine" />
+        </dependencies>
+
+        <!--<provides>NOT
+        YET IMPLEMENTED</provides>-->
+        <!--<conflicts>NOT
+        YET IMPLEMENTED</conflicts>-->
+        <!--<replaces>NOT
+        YET IMPLEMENTED</replaces>-->
+    </metadata>
+    <files>
+        <file src="legal\**" target="legal" />
+        <file src="tools\**" target="tools" />
+    </files>
+</package>
