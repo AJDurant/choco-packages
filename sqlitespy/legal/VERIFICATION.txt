@@ -11,7 +11,7 @@ Package can be verified like this:
 
 1. Go to
 
-   x64: https://www.yunqa.de/delphi/downloads/SQLiteSpy_v1.9.34.zip
+   x64: https://www.yunqa.de/delphi/downloads/SQLiteSpy_v1.9.36.zip
 
    to download the executable.
 
@@ -19,4 +19,4 @@ Package can be verified like this:
    - Use powershell function 'Get-FileHash'
    - Use Chocolatey utility 'checksum.exe'
 
-   checksum64: 756216cc1e419429cc9a0e5a209ba8e750b2e276d5c027622c92e2786b83f311
+   checksum64: aef3e2d78739d58b3331336c617784e053993a1497d91c9b0851895ee14dd049
