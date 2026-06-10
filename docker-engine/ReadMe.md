@@ -4,7 +4,7 @@ Docker is an open platform for developers and sysadmins to build, ship, and run
 distributed applications. This package contains the docker engine for Windows to run
 Windows containers on Windows hosts.
 
-NOTE: Docker engine for Windows is is simply the service to run containers. You might
+NOTE: Docker engine for Windows is simply the service to run containers. You might
 want to have a look at the "docker-desktop" package for better usability.
 
 From v23 docker engine is installed into `$env:ProgramFiles\docker` (the default docker
