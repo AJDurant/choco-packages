@@ -8,7 +8,7 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
     <metadata>
         <!-- == PACKAGE SPECIFIC SECTION == -->
         <id>docker-engine</id>
-        <version>29.6.1</version>
+        <version>29.8.0</version>
         <packageSourceUrl>https://github.com/AJDurant/choco-packages/tree/main/docker-engine</packageSourceUrl>
         <owners>AJDurant</owners>
         <!-- ============================== -->
@@ -32,7 +32,7 @@ enclosed in quotation marks, you should use an editor that supports UTF-8, not t
 distributed applications. This package contains the docker engine for Windows to run
 Windows containers on Windows hosts.
 
-NOTE: Docker engine for Windows is is simply the service to run containers. You might
+NOTE: Docker engine for Windows is simply the service to run containers. You might
 want to have a look at the "docker-desktop" package for better usability.
 
 From v23 docker engine is installed into `$env:ProgramFiles\docker` (the default docker
@@ -67,7 +67,7 @@ This package is maintained by the community members.
 
 LICENSE: Apache 2.0.
 ]]></description>
-        <releaseNotes>https://github.com/moby/moby/releases/tag/docker-v29.6.1</releaseNotes>
+        <releaseNotes>https://github.com/moby/moby/releases/tag/docker-v29.8.0</releaseNotes>
         <!-- =============================== -->
 
         <!-- Specifying dependencies and version ranges?
