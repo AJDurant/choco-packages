@@ -7,7 +7,7 @@ Package can be verified like this:
 
 1. Go to
 
-   x64: https://github.com/containerd/containerd/releases/download/v2.2.2/containerd-2.2.2-windows-amd64.tar.gz
+   x64: https://github.com/containerd/containerd/releases/download/v2.3.5/containerd-2.3.5-windows-amd64.tar.gz
 
    to download the executable.
 
@@ -16,7 +16,7 @@ Package can be verified like this:
    - Use Chocolatey utility 'checksum.exe'
 
    checksumtype64: sha256
-   checksum64: d582136ef4d7ad748c70b0c6a0f6ecf176298e2da348874c730b39592bd0c7ee
+   checksum64: ae0340009f7dd984311a3aa95f579986a51cdc2da25a0246b0856b31ddc9ccf1
 
 
 File 'LICENSE.txt' is obtained from:
